@@ -1,0 +1,2 @@
+import{NextResponse}from"next/server";import{db}from"@/lib/supabase";import{adminApi}from"@/lib/auth";type C={params:Promise<{id:string}>};
+export async function DELETE(_req:Request,c:C){const denied=await adminApi();if(denied)return denied;const{id}=await c.params;const{error}=await db.from("packages").delete().eq("id",id);if(error)return NextResponse.json({error:error.message},{status:500});return NextResponse.json({ok:true})}
