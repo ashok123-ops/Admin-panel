@@ -1,1 +1,0 @@
-export default function Unauthorized(){return <main className="login"><section className="loginbox"><h1>Access denied</h1><p className="muted">This account is not in ADMIN_EMAILS.</p><a href="/login">Back to login</a></section></main>}

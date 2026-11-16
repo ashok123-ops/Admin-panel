@@ -1,2 +1,0 @@
-import{NextResponse}from"next/server";import{db}from"@/lib/supabase";import{adminApi}from"@/lib/auth";
-export async function GET(){const denied=await adminApi();if(denied)return denied;const{data,error}=await db.from("devices").select("id,device_id,app_id,status,created_at,last_seen_at").order("last_seen_at",{ascending:false}).limit(500);if(error)return NextResponse.json({error:error.message},{status:500});return NextResponse.json({devices:data})}
